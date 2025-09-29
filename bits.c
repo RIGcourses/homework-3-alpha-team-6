@@ -174,7 +174,8 @@ NOTES:
  *   Rating: 1
  */
 int bitNor(int x, int y) {
-  return ~(x&~y);
+  /* Applying De Morgan's Law ~(x/y) == ~x & ~y */
+  return ~x & ~y;
 }
 /* 
  * bitXor - x^y using only ~ and & 
@@ -236,3 +237,4 @@ int rotateRight(int x, int n) {
 int isNonNegative(int x) {
   return 2;
 }
+
