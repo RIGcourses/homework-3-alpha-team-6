@@ -194,8 +194,7 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmax(void) {
-  int max_int = (unsigned int) ~0>>1;
-  return;
+  return ~(1 << 31);
 }
 /* 
  * isNotEqual - return 0 if x == y, and 1 otherwise 
@@ -225,8 +224,8 @@ int copyLSB(int x) {
  *   Max ops: 25
  *   Rating: 3 
  */
-int rotateRight(int x, int n) {
-  return ;
+int rotateRight(int x, int n)){
+  return (x << (32 + (~n +1))) | ((x >> n) & ~(~0 << (32 + (~n + 1))));
 }
 /* 
  * isNonNegative - return 1 if x >= 0, return 0 otherwise 
