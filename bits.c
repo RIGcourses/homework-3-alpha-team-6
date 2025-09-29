@@ -174,7 +174,7 @@ NOTES:
  *   Rating: 1
  */
 int bitNor(int x, int y) {
-  return 2;
+  return ~(x&~y);
 }
 /* 
  * bitXor - x^y using only ~ and & 
