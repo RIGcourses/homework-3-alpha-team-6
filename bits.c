@@ -235,13 +235,9 @@ int rotateRight(int x, int n)){
  *   Rating: 3
  */
 int isNonNegative(int x) {
-<<<<<<< HEAD
 /* this copies the significand value all the way over as it goes right
 which would originally return 0 for positive and 1 for negative, but
 we then get the negation */  
  return !(x >> 31);
-=======
-  return !(x >> 31);
->>>>>>> 33f6760 (attempting to redo isNonNegative)
 }
 
