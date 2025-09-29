@@ -224,7 +224,7 @@ int copyLSB(int x) {
  *   Max ops: 25
  *   Rating: 3 
  */
-int rotateRight(int x, int n)){
+int rotateRight(int x, int n){
   return (x << (32 + (~n +1))) | ((x >> n) & ~(~0 << (32 + (~n + 1))));
 }
 /* 
