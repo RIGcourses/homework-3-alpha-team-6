@@ -226,7 +226,7 @@ int copyLSB(int x) {
  *   Rating: 3 
  */
 int rotateRight(int x, int n) {
-  return 2;
+  return ;
 }
 /* 
  * isNonNegative - return 1 if x >= 0, return 0 otherwise 
@@ -236,6 +236,9 @@ int rotateRight(int x, int n) {
  *   Rating: 3
  */
 int isNonNegative(int x) {
-  return 2;
+/* this copies the significand value all the way over as it goes right
+which would originally return 0 for positive and 1 for negative, but
+we then get the negation */  
+ return !(x >> 31);
 }
 
