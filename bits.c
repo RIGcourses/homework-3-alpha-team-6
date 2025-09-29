@@ -194,7 +194,8 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmax(void) {
-  return 2;
+  int max_int = (unsigned int) ~0>>1;
+  return;
 }
 /* 
  * isNotEqual - return 0 if x == y, and 1 otherwise 
@@ -204,7 +205,7 @@ int tmax(void) {
  *   Rating: 2
  */
 int isNotEqual(int x, int y) {
-  return 2;
+  return !!(x^y);
 }
 /* 
  * copyLSB - set all bits of result to least significant bit of x
