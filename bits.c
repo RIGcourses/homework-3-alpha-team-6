@@ -1,7 +1,7 @@
 /* 
  * CS:APP Data Lab 
  * 
- * <Please put your name and userid here>
+ * <Griffen Lee glee10@luc.edu>
  * 
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
@@ -194,8 +194,8 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmax(void) {
-  int max_int = (unsigned int) ~0>>1;
-  return;
+  
+  return (1 >> 31);
 }
 /* 
  * isNotEqual - return 0 if x == y, and 1 otherwise 
@@ -225,10 +225,29 @@ int copyLSB(int x) {
  *   Max ops: 25
  *   Rating: 3 
  */
+
+
+
 int rotateRight(int x, int n) {
-  return ;
+// x >> n right shifts x to save the upper n bits into the right most 
+// part of the int 
+
+// x << (32 + ~n + 1) shifts x to the left by n mod 32 to push the
+// lower n bits to the MSB 
+
+// we then OR them together to concat the left and right 
+//
+// ex x = 0x1234 and n = 4
+// x >> n = 0x0123
+// x << (32 + ~n + 1) = x << (32 - 5 + 1) = x << 28 = 0x4000
+//
+// 0x0123 | 0x4000 = 0x4123
+  return (x >> n) | (x << (32 + ~n + 1));
 }
 /* 
+
+
+
  * isNonNegative - return 1 if x >= 0, return 0 otherwise 
  *   Example: isNonNegative(-1) = 0.  isNonNegative(0) = 1.
  *   Legal ops: ! ~ & ^ | + << >>
