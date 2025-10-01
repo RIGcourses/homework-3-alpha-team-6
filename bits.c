@@ -194,8 +194,12 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmax(void) {
+<<<<<<< HEAD
   
   return (1 >> 31);
+=======
+  return ~(1 << 31);
+>>>>>>> refs/remotes/origin/main
 }
 /* 
  * isNotEqual - return 0 if x == y, and 1 otherwise 
@@ -225,6 +229,7 @@ int copyLSB(int x) {
  *   Max ops: 25
  *   Rating: 3 
  */
+<<<<<<< HEAD
 
 
 
@@ -243,6 +248,10 @@ int rotateRight(int x, int n) {
 //
 // 0x0123 | 0x4000 = 0x4123
   return (x >> n) | (x << (32 + ~n + 1));
+=======
+int rotateRight(int x, int n){
+  return (x << (32 + (~n +1))) | ((x >> n) & ~(~0 << (32 + (~n + 1))));
+>>>>>>> refs/remotes/origin/main
 }
 /* 
 
