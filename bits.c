@@ -211,7 +211,7 @@ int tmax(void) {
  *   Rating: 2
  */
 int isNotEqual(int x, int y) {
-  return !!(x^y);
+  return !!(x^y);//this is the x or operator. The !! operands makes these into
 }
 /* 
  * copyLSB - set all bits of result to least significant bit of x
@@ -221,7 +221,8 @@ int isNotEqual(int x, int y) {
  *   Rating: 2
  */
 int copyLSB(int x) {
-  return (x << 31) >> 31;
+  return (x << 31) >> 31;//there is a shift 31 times to the left and then there is another shift right afterwards another 31 times.
+//this leaves you only with the least significant bit.
 }
 /* 
  * rotateRight - Rotate x to the right by n
