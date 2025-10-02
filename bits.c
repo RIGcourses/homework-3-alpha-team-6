@@ -233,20 +233,11 @@ int copyLSB(int x) {
  */
 
 int rotateRight(int x, int n) {
-// x >> n right shifts x to save the upper n bits into the right most 
-// part of the int 
-
-// x << (32 + ~n + 1) shifts x to the left by n mod 32 to push the
-// lower n bits to the significand 
-
-// we then OR them together to concat the left and right 
-//
-// ex x = 0x1234 and n = 4
-// x >> n = 0x0123
-// x << (32 + ~n + 1) = x << (32 - 5 + 1) = x << 28 = 0x4000
-//
-// 0x0123 | 0x4000 = 0x4123
-  return (x >> n) | (x << (32 + ~n + 1));
+// equivalent to x << (32 - n)
+// logical right shift
+  int left_shift  = x << (32 + ~n +1);
+  int right_shift = (x >> n) & ((1 << (32 + ~n +1)) +~0);
+  return left_shift | right_shift;
 }
 /* 
 
