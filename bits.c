@@ -1,7 +1,7 @@
 /* 
  * CS:APP Data Lab 
  * 
- * <Please put your name and userid here>
+ * <Griffen Lee glee10@luc.edu>
  * 
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
@@ -185,6 +185,9 @@ int bitNor(int x, int y) {
  *   Rating: 1
  */
 int bitXor(int x, int y) {
+//the left operation chunk is to  get x | y  the bitwise OR using only ~ and &  , demorgan stuff
+// the right side  does a NAND
+// & them together 
   return ~(~x&~y)&~(x&y);
 }
 /* 
@@ -194,8 +197,11 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmax(void) {
-  int max_int = (unsigned int) ~0>>1;
-  return;
+//place a 1 in the first place,
+// then do a left shift of 31 bits, meaning it fills 31 bits from the left with 0s
+//then the ~ flips all the bits so the significand turns positive and the rest are 1's
+  return ~(1 << 31);
+
 }
 /* 
  * isNotEqual - return 0 if x == y, and 1 otherwise 
@@ -225,11 +231,23 @@ int copyLSB(int x) {
  *   Max ops: 25
  *   Rating: 3 
  */
+
 int rotateRight(int x, int n) {
+<<<<<<< HEAD
 /* */ 
   return (x << (32 + (~n + 1))) | ((x >> n) & ~(~0 << (32 + (~n + 1))));
+=======
+// equivalent to x << (32 - n)
+// logical right shift
+  int left_shift  = x << (32 + ~n +1);
+  int right_shift = (x >> n) & ((1 << (32 + ~n +1)) +~0);
+  return left_shift | right_shift;
+>>>>>>> refs/remotes/origin/main
 }
 /* 
+
+
+
  * isNonNegative - return 1 if x >= 0, return 0 otherwise 
  *   Example: isNonNegative(-1) = 0.  isNonNegative(0) = 1.
  *   Legal ops: ! ~ & ^ | + << >>
