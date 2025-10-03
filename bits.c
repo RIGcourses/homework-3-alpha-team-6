@@ -176,7 +176,7 @@ NOTES:
 int bitNor(int x, int y) {
   /* Applying De Morgan's Law ~(x/y) == ~x & ~y */
   return ~x & ~y;
-}
+}//this is the not operator and it is flipping the bits in binary representation as it inverts the input signal. //
 /* 
  * bitXor - x^y using only ~ and & 
  *   Example: bitXor(4, 5) = 1
@@ -189,7 +189,7 @@ int bitXor(int x, int y) {
 // the right side  does a NAND
 // & them together 
   return ~(~x&~y)&~(x&y);
-}
+}// this expression contains the exclusive or operator 
 /* 
  * TMax - return maximum two's complement integer 
  *   Legal ops: ! ~ & ^ | + << >>
@@ -211,7 +211,9 @@ int tmax(void) {
  *   Rating: 2
  */
 int isNotEqual(int x, int y) {
-  return !!(x^y);//this is the x or operator. The !! operands makes these into
+  return !!(x^y);//it is testing with the or operand whether the x and y are different. If they arent equal, then the result would
+//just return a one, but the equal gives a 0. The not operator is just making sure that the answer is a 0 or 1 instead of something
+//non zero//
 }
 /* 
  * copyLSB - set all bits of result to least significant bit of x
@@ -239,12 +241,14 @@ int rotateRight(int x, int n) {
   return (x << (32 + (~n + 1))) | ((x >> n) & ~(~0 << (32 + (~n + 1))));
 =======
 // equivalent to x << (32 - n)
-// logical right shift
+// logical right shift  by the n, and its going left 32 bits then combines them with the or operand as the right shift gives the
+//rotated number, and the left shift brings the bits back together as it rotates x right by n bits.
   int left_shift  = x << (32 + ~n +1);
   int right_shift = (x >> n) & ((1 << (32 + ~n +1)) +~0);
   return left_shift | right_shift;
 >>>>>>> refs/remotes/origin/main
-}
+}//it returns the result of the shift operand. It shifts to the left first and then it will shift to the right. The return statement
+//then passes the shifted value back to the calling function//
 /* 
 
 
