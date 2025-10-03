@@ -1,7 +1,7 @@
 /* 
  * CS:APP Data Lab 
  * 
- * <Please put your name and userid here>
+ * <Griffen Lee glee10@luc.edu>
  * 
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
@@ -174,8 +174,9 @@ NOTES:
  *   Rating: 1
  */
 int bitNor(int x, int y) {
-  return 2;
-}
+  /* Applying De Morgan's Law ~(x/y) == ~x & ~y */
+  return ~x & ~y;
+}//this is the not operator and it is flipping the bits in binary representation as it inverts the input signal. //
 /* 
  * bitXor - x^y using only ~ and & 
  *   Example: bitXor(4, 5) = 1
@@ -184,8 +185,11 @@ int bitNor(int x, int y) {
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-  return 2;
-}
+//the left operation chunk is to  get x | y  the bitwise OR using only ~ and &  , demorgan stuff
+// the right side  does a NAND
+// & them together 
+  return ~(~x&~y)&~(x&y);
+}// this expression contains the exclusive or operator 
 /* 
  * TMax - return maximum two's complement integer 
  *   Legal ops: ! ~ & ^ | + << >>
@@ -193,7 +197,11 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmax(void) {
-  return 2;
+//place a 1 in the first place,
+// then do a left shift of 31 bits, meaning it fills 31 bits from the left with 0s
+//then the ~ flips all the bits so the significand turns positive and the rest are 1's
+  return ~(1 << 31);
+
 }
 /* 
  * isNotEqual - return 0 if x == y, and 1 otherwise 
@@ -203,7 +211,9 @@ int tmax(void) {
  *   Rating: 2
  */
 int isNotEqual(int x, int y) {
-  return 2;
+  return !!(x^y);//it is testing with the or operand whether the x and y are different. If they arent equal, then the result would
+//just return a one, but the equal gives a 0. The not operator is just making sure that the answer is a 0 or 1 instead of something
+//non zero//
 }
 /* 
  * copyLSB - set all bits of result to least significant bit of x
@@ -213,7 +223,8 @@ int isNotEqual(int x, int y) {
  *   Rating: 2
  */
 int copyLSB(int x) {
-  return 2;
+  return (x << 31) >> 31;//there is a shift 31 times to the left and then there is another shift right afterwards another 31 times.
+//this leaves you only with the least significant bit.
 }
 /* 
  * rotateRight - Rotate x to the right by n
@@ -223,10 +234,25 @@ int copyLSB(int x) {
  *   Max ops: 25
  *   Rating: 3 
  */
+
 int rotateRight(int x, int n) {
-  return 2;
-}
+<<<<<<< HEAD
+/* */ 
+  return (x << (32 + (~n + 1))) | ((x >> n) & ~(~0 << (32 + (~n + 1))));
+=======
+// equivalent to x << (32 - n)
+// logical right shift  by the n, and its going left 32 bits then combines them with the or operand as the right shift gives the
+//rotated number, and the left shift brings the bits back together as it rotates x right by n bits.
+  int left_shift  = x << (32 + ~n +1);
+  int right_shift = (x >> n) & ((1 << (32 + ~n +1)) +~0);
+  return left_shift | right_shift;
+>>>>>>> refs/remotes/origin/main
+}//it returns the result of the shift operand. It shifts to the left first and then it will shift to the right. The return statement
+//then passes the shifted value back to the calling function//
 /* 
+
+
+
  * isNonNegative - return 1 if x >= 0, return 0 otherwise 
  *   Example: isNonNegative(-1) = 0.  isNonNegative(0) = 1.
  *   Legal ops: ! ~ & ^ | + << >>
@@ -234,5 +260,9 @@ int rotateRight(int x, int n) {
  *   Rating: 3
  */
 int isNonNegative(int x) {
-  return 2;
+/* this copies the significand value all the way over as it goes right
+which would originally return 0 for positive and 1 for negative, but
+we then get the negation */
+ return !(x >> 31);
 }
+
